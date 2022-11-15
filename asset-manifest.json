@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/conway-loader-builder/static/css/main.21449fe5.css",
+    "main.js": "/conway-loader-builder/static/js/main.8c324cb9.js",
+    "static/js/787.cf845056.chunk.js": "/conway-loader-builder/static/js/787.cf845056.chunk.js",
+    "index.html": "/conway-loader-builder/index.html",
+    "main.21449fe5.css.map": "/conway-loader-builder/static/css/main.21449fe5.css.map",
+    "main.8c324cb9.js.map": "/conway-loader-builder/static/js/main.8c324cb9.js.map",
+    "787.cf845056.chunk.js.map": "/conway-loader-builder/static/js/787.cf845056.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.21449fe5.css",
+    "static/js/main.8c324cb9.js"
+  ]
+}
