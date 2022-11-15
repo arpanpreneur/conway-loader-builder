@@ -1,70 +1,56 @@
-# Getting Started with Create React App
+# Conway Loader
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a visual builder for loader elements that runs using Conway's using Game of Life Algorithm.
 
-## Available Scripts
+![](assets/20221115_055828_20221115_055235_builder_screenshot.jpeg)
 
-In the project directory, you can run:
+Access it here: [https://ArpanKIIT2017.github.io/conway-loader-builder](https://)
 
-### `npm start`
+#### Use it
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```
+// Import it depending on you build environemnt
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+import './styles/general.scss';
+import conwayLoader from 'conway-loader';
 
-### `npm test`
+// Or
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+const conwayLoader = require('conway-loader');
 
-### `npm run build`
+// Should Work the following way
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+window.loader = conwayLoader.createLoader({
+    rootNode: document.getElementById("root"),
+    size: 50,
+    animationDelay: 500,
+    randomColor: true,
+    initialBoard: conwayLoader.presets.blink(),
+    loopPattern: false, // If your pattern is oscillatory by default
+ });
+ 
+ window.loader.render();
+ window.loader.start();
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### Following are the Presets (Raise PR to add more)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* beauty
+* blink
+* blinkyFace
+* quadpole
+* styleSpin
 
-### `npm run eject`
+These presets are basically starting states of the GoL algorithm. These are specifically chosen because of their oscillatory behaviour (turing machine never halts), looks good for loader purposes.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+You can have precise control over the resolution by using the height, width, cellSizeR, cellSizeC paramaters. If you provide a initialBoard (presets are matrices passed to this) then you don't need to specify cellSizeR and cellSizeC, it will be autocalculated. Please note that making high resolution loaders may result in high CPU load as the Game of Life computation is CPU-intensive in the order of O(n^m), where n is the number of rows and m is the number of columns in the grid.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### How to stop / suspend the loader
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+`window.loader.stop();`
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### How to Contribute
 
-## Learn More
+Any positive modifications including performance fixes are welcome.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+If you find issues, or have feature requests, please raise them in the GitHub Issues Tracker.
